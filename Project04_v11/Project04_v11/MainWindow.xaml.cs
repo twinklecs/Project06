@@ -15,23 +15,26 @@ namespace Project04_v11
 
         private void btn_Result_Click(object sender, RoutedEventArgs e)
         {
-            tbk_result.Text = "";
-
-            for (int i = Convert.ToInt32(tb_A.Text); i <= Convert.ToInt32(tb_B.Text); i++)
+            if (Convert.ToInt32(tb_B.Text) <= 1000 && Convert.ToInt32(tb_A.Text) >= 0)
             {
-                if (IsPerfect(i))
+                tbk_result.Text = "";
+
+                for (int i = Convert.ToInt32(tb_A.Text); i <= Convert.ToInt32(tb_B.Text); i++)
                 {
-                    if (tbk_result.Text == "")
-                        tbk_result.Text += $"{i}";
-                    else
-                        tbk_result.Text += $"+{i}";
+                    if (IsPerfect(i))
+                    {
+                        if (tbk_result.Text == "")
+                            tbk_result.Text += $"{i}";
+                        else
+                            tbk_result.Text += $", {i}";
+                    }
                 }
             }
         }
 
         private bool IsPerfect(int n)
         {
-            int sum = 1;
+            int sum = 0;
             for (int i = 1; i < n; i++)
             {
                 if (n % i == 0)
